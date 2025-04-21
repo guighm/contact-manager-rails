@@ -1,0 +1,19 @@
+networks:
+  contact_manager:
+
+volumes:
+  contact_manager_data: {}
+
+services:
+  db:
+    image: postgres:17
+    networks:
+      contact_manager:
+    volumes:
+      - contact_manager_data:/var/lib/postgres/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: contact_manager
